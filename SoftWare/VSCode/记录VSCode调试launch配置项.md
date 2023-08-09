@@ -110,37 +110,38 @@ int main(void){
 
 ```json
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",   // 任务名称，与launch.json的preLaunchTask相对应
-            "type": "shell", 
-            "command": "gcc",   // 要使用的编译器
-            "args": [
-                "${file}",
-                "-o", // 指定输出文件名，不加该参数则默认输出a.exe，Linux下默认a.out
-                "${fileDirname}/${fileBasenameNoExtension}",
-                "-g", // 生成和调试有关的信息
-                "-Wall", // 开启额外警告
-            ], // 编译命令参数
-            "group": {
-            "kind": "build",
-            "isDefault": true // 设为false可做到一个tasks.json配置多个编译指令，需要自己修改本文件
-        },
-        "presentation": {
-            "echo": true,
-            "reveal": "always", // 在“终端”中显示编译信息的策略，可以为always，silent，never。具体参见VSC的文档
-            "focus": true, // 设为true后可以使执行task时焦点聚集在终端
-            "panel": "new" // 不同的文件的编译信息共享一个终端面板
-        },
-        // Use the standard MS compiler pattern to detect errors, warnings and infos
-        "problemMatcher": "$msCompile"
-    }
-]
-```
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build", // 任务名称，与launch.json的preLaunchTask相对应
+			"type": "shell",
+			"command": "gcc", // 要使用的编译器
+			"args": [
+				"${file}",
+				"-o", // 指定输出文件名，不加该参数则默认输出a.exe，Linux下默认a.out
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"-g", // 生成和调试有关的信息
+				"-Wall", // 开启额外警告
+			], // 编译命令参数
+			"group": {
+				"kind": "build",
+				"isDefault": true // 设为false可做到一个tasks.json配置多个编译指令，需要自己修改本文件
+			},
+			"presentation": {
+				"echo": true,
+				"reveal": "always", // 在“终端”中显示编译信息的策略，可以为always，silent，never。具体参见VSC的文档
+				"focus": true, // 设为true后可以使执行task时焦点聚集在终端
+				"panel": "new" // 不同的文件的编译信息共享一个终端面板
+			},
+			// Use the standard MS compiler pattern to detect errors, warnings and infos
+			"problemMatcher": "$msCompile"
+		}
+	]
 }
+```
+
 
 ## 2.4 调试
 

@@ -114,6 +114,7 @@ chmod -R 755 /root/cert
 
 ```sh
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
 ```
 
 默认端口54321,默认用户名密码都是admin,都可以登录修改,登录方式为 域名:54321
