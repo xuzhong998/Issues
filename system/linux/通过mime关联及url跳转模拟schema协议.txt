@@ -1,0 +1,33 @@
+将修改好的.desktop(主要是添加MineType和Exec后添加 %U 参数)放到usr/share/applications文件夹下
+.desktop文件内容:
+xuzhong@xuzhong-vmwarevirtualplatform:/usr/share/applications$ cat SDM-AppStore-Widget.desktop 
+[Desktop Entry]
+Type=Application
+Name=SDM-AppStore-Widget
+Comment=
+Encoding=UTF-8
+Icon=/usr/lib/sdm/appstore/logo.png
+Exec=/usr/lib/sdm/appstore/SDM-AppStore-Widget.sh %U
+Terminal=false
+Categories=Application;Development;
+Name[zh_CN]=企业应用商店
+MimeType=x-scheme-handler/myapp;text/html;
+
+一.以下二选一执行即可
+1. 设置关联MIME程序, 默认路径在 usr/share/applications 中
+xdg-mime default SDM-AppStore-Widget.desktop x-scheme-handler/mdmapp
+
+2. 设置默认的 URI 方案处理程序
+xdg-settings set default-url-scheme-handler mdmapp SDM-AppStore-Widget.desktop
+
+二.以下进行查询
+1.通过以下命令查询是否设置
+2.xdg-mime query default x-scheme-handler/mdmapp
+通过以下命令查询是否设置
+xdg-settings get default-url-scheme-handler mdmapp
+xdg-settings check default-url-scheme-handler mdmapp SDM-AppStore-Widget.desktop
+
+三.通过以下实例命令传递参数打开页面
+xdg-open "mdmapp:?operationName=openAppDetail&userName=xuxuxuasdfasdfadsf.zh&appIdentifier=建行员工(国产化) v1.16.1（x64位）&appVersion=1.16.1"
+
+注意设置的关键字一定不能有大写(mdmapp), 否则失败
