@@ -1,0 +1,18 @@
+[Macros]
+stop Service=12:4:0:cd /etc/systemd/system/__PTVIRG__systemctl stop mso3000x-start.service__PTVIRG__cd -|
+set Eth0 Speed=12:4:0:ethtool -s eth0 autoneg off speed 100 duplex full|
+remount=12:0:0:mount -o remount, rw /run/media/mmcblk0p7  |
+mount=12:4:0:mount -t nfs -o nolock,nfsvers__EQQUAL__3 192.168.20.60__DBLDOT__/source/ /mnt/|
+runWebServer=12:4:0:/mnt/webServer/webserver|
+runFrpc=12:4:0:/mnt/webServer/frp/frp_0.34.0_linux_arm/frpc -c /mnt/webServer/frp/frp_0.34.0_linux_arm/frpc.ini|
+runOscilloscope=12:4:0:/mnt/mso3000x uart|
+oneLong=12:4:0:mount -o remount, rw /run/media/mmcblk0p7__PTVIRG__cd /etc/systemd/system/__PTVIRG__systemctl stop mso3000x-start.service__PTVIRG__cd -__PTVIRG__udhcpc --now__PTVIRG__mount -t nfs -o nolock,nfsvers__EQQUAL__3 192.168.20.60__DBLDOT__/source/ /mnt/|
+[MacrosHotkeys]
+stop Service=0
+set Eth0 Speed=0
+remount=0
+mount=0
+runWebServer=0
+runFrpc=0
+runOscilloscope=0
+
