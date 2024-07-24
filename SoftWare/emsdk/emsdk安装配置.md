@@ -59,13 +59,15 @@ JAVA_HOME = F:\Projects\webserver\osc_web_full_i18_lzo\emsdk\emsdk-main\java\8.1
 F:\Projects\webserver\osc_web_full_i18_lzo\emsdk\emsdk-main\upstream\emscripten\.emscripten
 ```
 
-将以下内容更改为对应emsdk的目录,
+将以下内容更改为对应emsdk的目录,还有node执行程序位置
 
 我的是
 
 ```txt
 LLVM_ROOT = 'F:\\Projects\\webserver\\osc_web_full_i18_lzo\\emsdk\\emsdk-main\\upstream\\bin' # directory
 BINARYEN_ROOT = 'F:\\Projects\\webserver\\osc_web_full_i18_lzo\\emsdk\\emsdk-main\\upstream' # directory
+
+NODE_JS = 'D:\\software\\nvm\\NODEJS\\node.EXE' # executable
 ```
 
 然后重新打开命令行(git-bash或者powershell等), 输入emcc -v 可以看到正常信息,无报错即可使用.
