@@ -75,8 +75,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 
 ```
 
-
-
 4.再输入命令更新源。
 
 ```sh
