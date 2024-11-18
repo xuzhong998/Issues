@@ -565,3 +565,66 @@ ssh root@192.168.21.27 -p 9901
      #比如宿主机IP 192.168.21.27, 通过镜像网络模式使用WSL2的命令如下
      mount -t nfs 192.168.21.27:/shared/ /mnt/
      ```
+
+## 3. wsl命令
+
+### 备份子系统
+
+1. 先查看有哪些子系统
+
+```powershell
+wsl -l
+```
+
+2. 子系统有 Ubuntu 和 docker-desktop
+
+```powershell
+zhongx@ZX C:\Users\zhongx>wsl -l
+适用于 Linux 的 Windows 子系统分发:
+Ubuntu (默认)
+docker-desktop
+
+zhongx@ZX C:\Users\zhongx>
+```
+
+3. 备份 Ubuntu 子系统,必须子系统处于关闭状态, 查看到 Ubuntu 还在运行
+
+```powershell
+zhongx@ZX C:\Users\zhongx>wsl -l --running
+适用于 Linux 的 Windows 子系统分发:
+Ubuntu (默认)
+
+zhongx@ZX C:\Users\zhongx>
+```
+
+4. 停止子系统, 使用 wsl --terminate Ubuntu 或者 `wsl --shutdown` (停止当前子系统)
+
+```powershell
+zhongx@ZX C:\Users\zhongx>wsl --terminate Ubuntu
+操作成功完成。
+
+zhongx@ZX C:\Users\zhongx>wsl -l --running
+没有正在运行的分发。
+
+zhongx@ZX C:\Users\zhongx>
+```
+
+5. 备份子系统到磁盘
+
+```powershell
+zhongx@ZX C:\Users\zhongx>wsl -l --running
+没有正在运行的分发。
+
+zhongx@ZX C:\Users\zhongx>wsl --export Ubuntu F:\wsl_backup\ubuntu_backup_2024_11_14.tar
+正在导出，这可能需要几分钟时间。...
+操作成功完成。
+
+zhongx@ZX C:\Users\zhongx>
+```
+
+6. 导入磁盘备份的子系统
+
+```powershell
+wsl --import Ubuntu C:\WSL F:\wsl_backup\ubuntu_backup_2024_11_14.tar
+```
+
